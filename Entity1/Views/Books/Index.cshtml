@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Entity1.Models.SACH>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                Tên Sách
+            </th>
+            <th>
+                Ảnh Bìa
+            </th>
+            <th>
+                Ngày Cập Nhật
+            </th>
+            <th>
+                Tên Chủ Đề
+            </th>
+            <th>
+                Giá Bán
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tensach)
+            </td>
+            <td>
+                <img src="/Pic/@item.Hinhminhhoa" height="200" width="200"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHUDE.TenChuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Masach }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Masach }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Masach })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
